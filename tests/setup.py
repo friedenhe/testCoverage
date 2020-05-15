@@ -17,8 +17,8 @@ import os
 
 libName = "pyTestRun"
 
-os.environ["CC"] = "mpicc"
-os.environ["CXX"] = "mpicxx"
+os.environ["CC"] = "gcc"
+os.environ["CXX"] = "g++"
 
 # These setup should reproduce calling wmake to compile OpenFOAM libraries and solvers
 ext = [
