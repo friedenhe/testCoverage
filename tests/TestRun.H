@@ -40,6 +40,8 @@ public:
 
     /// initialize all the state and intermedia variables
     void init();
+    
+    void run();
 
 };
 
