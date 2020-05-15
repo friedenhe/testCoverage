@@ -10,16 +10,16 @@ compiler:
 
 env:
   global:
-    - PWD = $(pwd)
+    - TESTDIR = $(pwd)
   jobs:
     - DOCKER_TAG=latest
 
 
 install:
-  - cd $PWD && pip install cython
+  - cd $TESTDIR && pip install cython
   # We thrown away the existing repo in Docker, and copy the new one in-place
-  - cd $PWD/tests && make
+  - cd $TESTDIR/tests && make
 
 script:
   # Run tests
-  - cd $PWD/tests && python runScript.py
+  - cd $TESTDIR/tests && python runScript.py
