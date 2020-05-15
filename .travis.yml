@@ -19,7 +19,7 @@ install:
 script:
   # Run tests
   - cd $TRAVIS_BUILD_DIR/tests && python runScript.py;
-  - testflo -n 1 $TRAVIS_BUILD_DIR --coverage --coverpkg testCoverage --cover-omit \*docs/\*;
+  - testflo -n 1 $TRAVIS_BUILD_DIR --coverage;
 
 after_success:
 - coveralls;
