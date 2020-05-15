@@ -2,9 +2,6 @@ os: linux
 dist: bionic
 language: generic
 
-services:
-    - docker
-
 env:
   global:
     - PWD = $(pwd)
@@ -14,8 +11,8 @@ env:
 
 install:
   # We thrown away the existing repo in Docker, and copy the new one in-place
-  - cd $(PWD)/tests && make
+  - cd $PWD/tests && make
 
 script:
   # Run tests
-  - cd $(PWD)/tests && python runScript.py
+  - cd $PWD/tests && python runScript.py
