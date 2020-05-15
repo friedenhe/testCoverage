@@ -16,10 +16,10 @@ env:
 
 
 install:
-  - cd $TESTDIR && pip install cython
+  - pip install cython
   # We thrown away the existing repo in Docker, and copy the new one in-place
-  - cd $TESTDIR/tests && make
+  - cd $TRAVIS_BUILD_DIR/tests && make
 
 script:
   # Run tests
-  - cd $TESTDIR/tests && python runScript.py
+  - cd $TRAVIS_BUILD_DIR/tests && python runScript.py
