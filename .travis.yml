@@ -17,7 +17,7 @@ install:
 
 script:
   # Run tests
-  - cd $TRAVIS_BUILD_DIR/tests && coverange run runScript.py;
+  - cd $TRAVIS_BUILD_DIR/tests && coverage run runScript.py;
   - coverage report;
 
 after_success:
