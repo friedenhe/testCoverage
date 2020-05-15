@@ -1,6 +1,9 @@
 os: linux
 dist: bionic
 language: generic
+python:
+  - "3.6"      # current default Python on Travis CI
+  - "3.7"
 
 env:
   global:
@@ -10,6 +13,7 @@ env:
 
 
 install:
+  - cd $PWD && pip install cython
   # We thrown away the existing repo in Docker, and copy the new one in-place
   - cd $PWD/tests && make
 
