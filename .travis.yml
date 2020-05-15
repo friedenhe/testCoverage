@@ -8,18 +8,18 @@ compiler:
   - gcc
 
 
-env:
-  global:
-    - TESTDIR = $(pwd)
-  jobs:
-    - DOCKER_TAG=latest
-
-
 install:
-  - pip install cython
+  - pip install cython;
+  - pip install coverage;
+  - pip install coveralls;
+  - pip install testflo==1.3.6;
   # We thrown away the existing repo in Docker, and copy the new one in-place
-  - cd $TRAVIS_BUILD_DIR/tests && make
+  - cd $TRAVIS_BUILD_DIR/tests && make;
 
 script:
   # Run tests
-  - cd $TRAVIS_BUILD_DIR/tests && python runScript.py
+  - cd $TRAVIS_BUILD_DIR/tests && python runScript.py;
+  - testflo -n 1 $TRAVIS_BUILD_DIR --coverage --coverpkg testCoverage --cover-omit \*docs/\*;
+
+after_success:
+- coveralls;
