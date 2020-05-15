@@ -4,8 +4,8 @@ language: generic
 python:
   - "3.6"      # current default Python on Travis CI
 
-gcc:
-  - "7.5"
+compiler:
+  - gcc
 
 
 env:
