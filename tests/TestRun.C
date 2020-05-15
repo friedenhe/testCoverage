@@ -25,6 +25,12 @@ void TestRun::init()
     std::cout<<"init..."<<std::endl;
 }
 
+void TestRun::run()
+{
+    int a=1.0;
+    int b=3.0+a;
+    std::cout<<"run..."<<std::endl;
+}
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 } // End namespace Foam
