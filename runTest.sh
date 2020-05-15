@@ -6,7 +6,7 @@ coveralls --help
 
 cat > foo.c <<'EOF'
 int main() {
-    int a = 1;
+    int a = 2;
     if(a == 2) {
         a = 3;
         /* LCOV_EXCL_START */
@@ -15,6 +15,7 @@ int main() {
         /* LCOV_EXCL_STOP */
         a = 6;
     }
+    a = 7;
     if(a == 7) {
         a = 8;
         a = 9; /* LCOV_EXCL_LINE */
