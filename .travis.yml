@@ -11,12 +11,13 @@ compiler:
 install:
   - pip install cython;
   - pip install cpp-coveralls
+  - pip install coverage
   # We thrown away the existing repo in Docker, and copy the new one in-place
   - cd $TRAVIS_BUILD_DIR/tests && make;
 
 script:
   # Run tests
-  - cd $TRAVIS_BUILD_DIR/tests && python runScript.py;
+  - cd $TRAVIS_BUILD_DIR/tests && coverange run runScript.py;
 
 after_success:
-  - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
+  - coveralls
