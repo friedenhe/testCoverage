@@ -20,6 +20,7 @@ cdef extern from "TestRun.H" namespace "Foam":
     cppclass TestRun:
         TestRun() except +
         void init()
+        void run()
 
 # create python wrappers that call cpp functions
 cdef class pyTestRun:
@@ -63,3 +64,5 @@ cdef class pyTestRun:
     # wrap all the other memeber functions in the cpp class
     def init(self):
         self._thisptr.init()
+    def run(self):
+        self._thisptr.run()
