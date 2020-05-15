@@ -3,7 +3,10 @@ dist: bionic
 language: generic
 python:
   - "3.6"      # current default Python on Travis CI
-  - "3.7"
+
+gcc:
+  - "7.5"
+
 
 env:
   global:
