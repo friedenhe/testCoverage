@@ -13,9 +13,6 @@ env:
   jobs:
     - TESTCODE=CPP
     - TESTCODE=PYTHON
-    
-    cpp-coveralls
-    - COVERALLS_NAME=coveralls
 
 notifications:
   webhooks: https://coveralls.io/webhook
