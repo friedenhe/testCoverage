@@ -16,6 +16,7 @@ script:
   # Run tests
   # We thrown away the existing repo in Docker, and copy the new one in-place
   - cd $TRAVIS_BUILD_DIR/tests && make;
-  - cd $TRAVIS_BUILD_DIR/tests && python runScript.py && cp * build/temp.linux-x86_64-2.7/;
+  - cd $TRAVIS_BUILD_DIR/tests && python runScript.py; #&& cp * build/temp.linux-x86_64-2.7/;
+  - rm -rf build *.cpp *.so;
   - coveralls
   #- cd $TRAVIS_BUILD_DIR && chmod 755 runTest.sh && ./runTest.sh;
