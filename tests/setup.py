@@ -31,7 +31,7 @@ ext = [
             "./",
         ],
         # These are from Make/options:EXE_LIBS
-        libraries=[
+        libraries=["gcov"
         ],
         # These are pathes of linked libraries
         library_dirs=[
