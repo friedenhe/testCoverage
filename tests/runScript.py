@@ -10,4 +10,5 @@ from pyTestRun import pyTestRun
 
 test = pyTestRun()
 test.init()
+test.run()
 
