@@ -18,7 +18,7 @@ script:
   - cd $TRAVIS_BUILD_DIR/tests && make;
   - cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/;
   - coveralls --exclude build/temp*/*.cpp;
-  - rm -rf ~/.local/bin/coveralls;
+  - rm -rf ~/.local/bin/coveralls && rm -rf ~/.local/lib/python2.7/site-packages/cpp_coveralls*;
   - pip install --user coveralls;
   - cd $TRAVIS_BUILD_DIR/tests && coverage run --source=runTest runScript.py;
   - coveralls;
