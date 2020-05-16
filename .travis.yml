@@ -7,7 +7,13 @@ python:
 compiler:
   - gcc
 
+env:
+  global:
+    - COVERALLS_PARALLEL=true;
 
+notifications:
+  webhooks: https://coveralls.io/webhook
+  
 install:
   - pip install cython;
 script:
