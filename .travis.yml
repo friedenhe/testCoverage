@@ -25,13 +25,14 @@ jobs:
         - cd $TRAVIS_BUILD_DIR/tests && make
         - python runScript.py
         - mv *.C *.H *.cpp build/temp*/
-        - coveralls --exclude build/temp*/*.cpp
+        - COVERALLS_PARALLEL=true coveralls
+        # --exclude build/temp*/*.cpp
     - stage: python
       script: 
         - pip install coveralls
         - cd $TRAVIS_BUILD_DIR/tests && make
         - coverage run --source=runTest runScript.py
-        - coveralls
+        - COVERALLS_PARALLEL=true coveralls
 
 #script:
   # Run tests pip install --user cpp-coveralls
