@@ -15,7 +15,7 @@ class DAFOAM(object):
 
         test = pyTestRun()
         test.init()
-        test.run()
+        #test.run()
         
     def runMe(self):
         a=1
