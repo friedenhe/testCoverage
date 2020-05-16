@@ -19,15 +19,15 @@ notifications:
   
 install:
   - pip install cython;
+  
 script:
-  jobs:
-    # Run tests
-    # We thrown away the existing repo in Docker, and copy the new one in-place
-    #- cd $TRAVIS_BUILD_DIR/tests && make && cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/ && coveralls --exclude build/temp*/*.cpp; 
-    - cd $TRAVIS_BUILD_DIR/tests && make;
-    - coverage run --source=runTest runScript.py;
-    - mv *.C *.H *.cpp build/temp*/;
-    - coveralls --exclude build/temp*/*.cpp; 
+  # Run tests
+  # We thrown away the existing repo in Docker, and copy the new one in-place
+  #- cd $TRAVIS_BUILD_DIR/tests && make && cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/ && coveralls --exclude build/temp*/*.cpp; 
+  - cd $TRAVIS_BUILD_DIR/tests && make;
+  - coverage run --source=runTest runScript.py;
+  - mv *.C *.H *.cpp build/temp*/;
+  - coveralls --exclude build/temp*/*.cpp; 
   #- cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/;
   # - coveralls --exclude build/temp*/*.cpp
   #- cd $TRAVIS_BUILD_DIR && chmod 755 runTest.sh && ./runTest.sh;
