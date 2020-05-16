@@ -9,3 +9,4 @@ DAFoam run script for the curved cube case
 from runTest import DAFOAM
 
 daFoam = DAFOAM()
+daFoam.runMe()
