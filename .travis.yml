@@ -10,27 +10,38 @@ compiler:
 env:
   global:
     - COVERALLS_PARALLEL=true
-  jobs:
-    - TESTCODE=CPP
-    - TESTCODE=PYTHON
 
 notifications:
   webhooks: https://coveralls.io/webhook
   
 install:
   - pip install cython
-  
-script:
+
+jobs:
+  include:
+    - stage: cpp
+      script: pip install cpp-coveralls
+      script: cd $TRAVIS_BUILD_DIR/tests && make
+      script: python runScript.py
+      script: mv *.C *.H *.cpp build/temp*/
+      script: coveralls --exclude build/temp*/*.cpp
+    - stage: python
+      script: pip install coveralls
+      script: cd $TRAVIS_BUILD_DIR/tests && make
+      script: coverage run --source=runTest runScript.py
+      script: coveralls
+
+#script:
   # Run tests pip install --user cpp-coveralls
   # We thrown away the existing repo in Docker, and copy the new one in-place
   #- cd $TRAVIS_BUILD_DIR/tests && make && cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/ && coveralls --exclude build/temp*/*.cpp; 
-  - if [ "$TESTCODE" = "CPP" ]; then pip install cpp-coveralls; fi
-  - if [ "$TESTCODE" = "PYTHON" ]; then pip install coveralls; fi 
-  - cd $TRAVIS_BUILD_DIR/tests && make
-  - if [ "$TESTCODE" = "CPP" ]; then python runScript.py; fi
-  - if [ "$TESTCODE" = "PYTHON" ]; then coverage run --source=runTest runScript.py; fi
-  - mv *.C *.H *.cpp build/temp*/
-  - coveralls --exclude build/temp*/*.cpp
+  #- if [ "$TESTCODE" = "CPP" ]; then pip install cpp-coveralls; fi
+  #- if [ "$TESTCODE" = "PYTHON" ]; then pip install coveralls; fi 
+  ##- cd $TRAVIS_BUILD_DIR/tests && make
+  #- if [ "$TESTCODE" = "CPP" ]; then python runScript.py; fi
+  #- if [ "$TESTCODE" = "PYTHON" ]; then coverage run --source=runTest runScript.py; fi
+  #- mv *.C *.H *.cpp build/temp*/
+  #- coveralls --exclude build/temp*/*.cpp
   #- cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/;
   # - coveralls --exclude build/temp*/*.cpp
   #- cd $TRAVIS_BUILD_DIR && chmod 755 runTest.sh && ./runTest.sh;
