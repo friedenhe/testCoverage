@@ -11,8 +11,11 @@ env:
   global:
     - COVERALLS_PARALLEL=true
   jobs:
-    - pip install --user cpp-coveralls
-    - pip install --user coveralls
+    - TESTCODE=CPP
+    - TESTCODE=PYTHON
+    
+    cpp-coveralls
+    - COVERALLS_NAME=coveralls
 
 notifications:
   webhooks: https://coveralls.io/webhook
@@ -21,11 +24,14 @@ install:
   - pip install cython
   
 script:
-  # Run tests
+  # Run tests pip install --user cpp-coveralls
   # We thrown away the existing repo in Docker, and copy the new one in-place
   #- cd $TRAVIS_BUILD_DIR/tests && make && cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/ && coveralls --exclude build/temp*/*.cpp; 
+  - if [ "$TESTCODE" = "CPP" ]; then pip install cpp-coveralls; fi
+  - if [ "$TESTCODE" = "PYTHON" ]; then pip install coveralls; fi 
   - cd $TRAVIS_BUILD_DIR/tests && make
-  - coverage run --source=runTest runScript.py
+  - if [ "$TESTCODE" = "CPP" ]; then python runScript.py; fi
+  - if [ "$TESTCODE" = "PYTHON" ]; then coverage run --source=runTest runScript.py; fi
   - mv *.C *.H *.cpp build/temp*/
   - coveralls --exclude build/temp*/*.cpp
   #- cd $TRAVIS_BUILD_DIR/tests && python runScript.py && mv *.C *.H *.cpp build/temp*/;
