@@ -9,7 +9,7 @@ DAFoam run script for the curved cube case
 
 class DAFOAM(object):
   
-    def __init__():
+    def __init__(self):
       
         from pyTestRun import pyTestRun
 
@@ -17,7 +17,7 @@ class DAFOAM(object):
         test.init()
         test.run()
         
-    def runMe():
+    def runMe(self):
         a=1
         b=2
         print("what")
