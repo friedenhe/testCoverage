@@ -32,7 +32,7 @@ ext = [
         ],
         # These are from Make/options:EXE_LIBS
         libraries=[
-            "gcov"
+            "coverage"
         ],
         # These are pathes of linked libraries
         library_dirs=[
@@ -40,7 +40,7 @@ ext = [
         ],
         # All other flags for OpenFOAM, users don't need to touch this
         extra_compile_args=[
-            "-std=c++11","-lgcov"
+            "-std=c++11","-coverage"
         ],
         # Extra link flags for OpenFOAM, users don't need to touch this
         extra_link_args=[],
